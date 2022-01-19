@@ -1,0 +1,454 @@
+
+#######################################################################
+##                                                                   ##
+##                  Single chain_4000 beads                          ##
+##                         Jan 2017                                  ##
+##                                                                   ##
+#######################################################################
+
+units		    lj
+boundary	    p p p
+atom_style	    molecular
+read_data	    N90_M_60_contacts_Series.data
+#read_restart	restart.Chain90_eta_16_run_1.100000000
+
+variable        root index Chain90_M_60_eta_11_series
+variable        Nf equal 100000
+variable        Ne equal 100
+variable        Nr equal ${Nf}/${Ne}
+variable        Nrestart equal 10000000
+
+variable	RandGen equal 1792#1011
+variable        Nrun equal 100000000#100000000
+variable        Ndump equal 100000
+variable	epsilon equal 11
+
+########################((General information))#######################
+
+compute         xAtom all property/atom x y z
+
+variable 	 x1_1 equal c_xAtom[1][1]
+variable 	 y1_1 equal c_xAtom[1][2]
+variable 	 z1_1 equal c_xAtom[1][3]
+variable 	 x1_2 equal c_xAtom[30][1]
+variable 	 y1_2 equal c_xAtom[30][2]
+variable 	 z1_2 equal c_xAtom[30][3]
+variable 	 x1_3 equal c_xAtom[60][1]
+variable 	 y1_3 equal c_xAtom[60][2]
+variable 	 z1_3 equal c_xAtom[60][3]
+variable 	 x1_4 equal c_xAtom[90][1]
+variable 	 y1_4 equal c_xAtom[90][2]
+variable 	 z1_4 equal c_xAtom[90][3]
+variable 	 x2_1 equal c_xAtom[91][1]
+variable 	 y2_1 equal c_xAtom[91][2]
+variable 	 z2_1 equal c_xAtom[91][3]
+variable 	 x2_2 equal c_xAtom[120][1]
+variable 	 y2_2 equal c_xAtom[120][2]
+variable 	 z2_2 equal c_xAtom[120][3]
+variable 	 x2_3 equal c_xAtom[150][1]
+variable 	 y2_3 equal c_xAtom[150][2]
+variable 	 z2_3 equal c_xAtom[150][3]
+variable 	 x2_4 equal c_xAtom[180][1]
+variable 	 y2_4 equal c_xAtom[180][2]
+variable 	 z2_4 equal c_xAtom[180][3]
+variable 	 x3_1 equal c_xAtom[181][1]
+variable 	 y3_1 equal c_xAtom[181][2]
+variable 	 z3_1 equal c_xAtom[181][3]
+variable 	 x3_2 equal c_xAtom[210][1]
+variable 	 y3_2 equal c_xAtom[210][2]
+variable 	 z3_2 equal c_xAtom[210][3]
+variable 	 x3_3 equal c_xAtom[240][1]
+variable 	 y3_3 equal c_xAtom[240][2]
+variable 	 z3_3 equal c_xAtom[240][3]
+variable 	 x3_4 equal c_xAtom[270][1]
+variable 	 y3_4 equal c_xAtom[270][2]
+variable 	 z3_4 equal c_xAtom[270][3]
+variable 	 x4_1 equal c_xAtom[271][1]
+variable 	 y4_1 equal c_xAtom[271][2]
+variable 	 z4_1 equal c_xAtom[271][3]
+variable 	 x4_2 equal c_xAtom[300][1]
+variable 	 y4_2 equal c_xAtom[300][2]
+variable 	 z4_2 equal c_xAtom[300][3]
+variable 	 x4_3 equal c_xAtom[330][1]
+variable 	 y4_3 equal c_xAtom[330][2]
+variable 	 z4_3 equal c_xAtom[330][3]
+variable 	 x4_4 equal c_xAtom[360][1]
+variable 	 y4_4 equal c_xAtom[360][2]
+variable 	 z4_4 equal c_xAtom[360][3]
+variable 	 x5_1 equal c_xAtom[361][1]
+variable 	 y5_1 equal c_xAtom[361][2]
+variable 	 z5_1 equal c_xAtom[361][3]
+variable 	 x5_2 equal c_xAtom[390][1]
+variable 	 y5_2 equal c_xAtom[390][2]
+variable 	 z5_2 equal c_xAtom[390][3]
+variable 	 x5_3 equal c_xAtom[420][1]
+variable 	 y5_3 equal c_xAtom[420][2]
+variable 	 z5_3 equal c_xAtom[420][3]
+variable 	 x5_4 equal c_xAtom[450][1]
+variable 	 y5_4 equal c_xAtom[450][2]
+variable 	 z5_4 equal c_xAtom[450][3]
+variable 	 x6_1 equal c_xAtom[451][1]
+variable 	 y6_1 equal c_xAtom[451][2]
+variable 	 z6_1 equal c_xAtom[451][3]
+variable 	 x6_2 equal c_xAtom[480][1]
+variable 	 y6_2 equal c_xAtom[480][2]
+variable 	 z6_2 equal c_xAtom[480][3]
+variable 	 x6_3 equal c_xAtom[510][1]
+variable 	 y6_3 equal c_xAtom[510][2]
+variable 	 z6_3 equal c_xAtom[510][3]
+variable 	 x6_4 equal c_xAtom[540][1]
+variable 	 y6_4 equal c_xAtom[540][2]
+variable 	 z6_4 equal c_xAtom[540][3]
+variable 	 x7_1 equal c_xAtom[541][1]
+variable 	 y7_1 equal c_xAtom[541][2]
+variable 	 z7_1 equal c_xAtom[541][3]
+variable 	 x7_2 equal c_xAtom[570][1]
+variable 	 y7_2 equal c_xAtom[570][2]
+variable 	 z7_2 equal c_xAtom[570][3]
+variable 	 x7_3 equal c_xAtom[600][1]
+variable 	 y7_3 equal c_xAtom[600][2]
+variable 	 z7_3 equal c_xAtom[600][3]
+variable 	 x7_4 equal c_xAtom[630][1]
+variable 	 y7_4 equal c_xAtom[630][2]
+variable 	 z7_4 equal c_xAtom[630][3]
+variable 	 x8_1 equal c_xAtom[631][1]
+variable 	 y8_1 equal c_xAtom[631][2]
+variable 	 z8_1 equal c_xAtom[631][3]
+variable 	 x8_2 equal c_xAtom[660][1]
+variable 	 y8_2 equal c_xAtom[660][2]
+variable 	 z8_2 equal c_xAtom[660][3]
+variable 	 x8_3 equal c_xAtom[690][1]
+variable 	 y8_3 equal c_xAtom[690][2]
+variable 	 z8_3 equal c_xAtom[690][3]
+variable 	 x8_4 equal c_xAtom[720][1]
+variable 	 y8_4 equal c_xAtom[720][2]
+variable 	 z8_4 equal c_xAtom[720][3]
+variable 	 x9_1 equal c_xAtom[721][1]
+variable 	 y9_1 equal c_xAtom[721][2]
+variable 	 z9_1 equal c_xAtom[721][3]
+variable 	 x9_2 equal c_xAtom[750][1]
+variable 	 y9_2 equal c_xAtom[750][2]
+variable 	 z9_2 equal c_xAtom[750][3]
+variable 	 x9_3 equal c_xAtom[780][1]
+variable 	 y9_3 equal c_xAtom[780][2]
+variable 	 z9_3 equal c_xAtom[780][3]
+variable 	 x9_4 equal c_xAtom[810][1]
+variable 	 y9_4 equal c_xAtom[810][2]
+variable 	 z9_4 equal c_xAtom[810][3]
+variable 	 x10_1 equal c_xAtom[811][1]
+variable 	 y10_1 equal c_xAtom[811][2]
+variable 	 z10_1 equal c_xAtom[811][3]
+variable 	 x10_2 equal c_xAtom[840][1]
+variable 	 y10_2 equal c_xAtom[840][2]
+variable 	 z10_2 equal c_xAtom[840][3]
+variable 	 x10_3 equal c_xAtom[870][1]
+variable 	 y10_3 equal c_xAtom[870][2]
+variable 	 z10_3 equal c_xAtom[870][3]
+variable 	 x10_4 equal c_xAtom[900][1]
+variable 	 y10_4 equal c_xAtom[900][2]
+variable 	 z10_4 equal c_xAtom[900][3]
+
+
+dump		total all custom ${Ndump} positions_series_c_60.lammpstrj id type x y z 
+dump_modify	total sort id
+
+
+#dump            total all xyz ${Ndump} dump.equi.xyz
+#dump_modify 	total flush yes
+
+#dump			total all xyz ${Ndump} positions_${epsilon}_series.txt
+#dump_modify 	total flush yes
+#dump_modify	total sort id
+
+
+variable	epsilon1 equal 0.1
+variable	epsilon2 equal ${epsilon}
+
+variable	epsilon_11 equal ${epsilon1}
+
+variable	epsilon_23 equal ${epsilon2}
+variable	epsilon_45 equal ${epsilon2}
+variable	epsilon_67 equal ${epsilon2}
+variable	epsilon_89 equal ${epsilon2}
+variable	epsilon_1011 equal ${epsilon2}
+variable	epsilon_1213 equal ${epsilon2}
+variable	epsilon_1415 equal ${epsilon2}
+variable	epsilon_1617 equal ${epsilon2}
+variable	epsilon_1819 equal ${epsilon2}
+variable	epsilon_2021 equal ${epsilon2}
+variable	epsilon_2223 equal ${epsilon2}
+variable	epsilon_2425 equal ${epsilon2}
+variable	epsilon_2627 equal ${epsilon2}
+variable	epsilon_2829 equal ${epsilon2}
+variable	epsilon_3031 equal ${epsilon2}
+variable	epsilon_3233 equal ${epsilon2}
+variable	epsilon_3435 equal ${epsilon2}
+variable	epsilon_3637 equal ${epsilon2}
+variable	epsilon_3839 equal ${epsilon2}
+variable	epsilon_4041 equal ${epsilon2}
+variable	epsilon_4243 equal ${epsilon2}
+variable	epsilon_4445 equal ${epsilon2}
+variable	epsilon_4647 equal ${epsilon2}
+variable	epsilon_4849 equal ${epsilon2}
+variable	epsilon_5051 equal ${epsilon2}
+variable	epsilon_5253 equal ${epsilon2}
+variable	epsilon_5455 equal ${epsilon2}
+variable	epsilon_5657 equal ${epsilon2}
+variable	epsilon_5859 equal ${epsilon2}
+variable	epsilon_6061 equal ${epsilon2}
+variable	epsilon_6263 equal ${epsilon2}
+variable	epsilon_6465 equal ${epsilon2}
+variable	epsilon_6667 equal ${epsilon2}
+variable	epsilon_6869 equal ${epsilon2}
+variable	epsilon_7071 equal ${epsilon2}
+variable	epsilon_7273 equal ${epsilon2}
+variable	epsilon_7475 equal ${epsilon2}
+variable	epsilon_7677 equal ${epsilon2}
+variable	epsilon_7879 equal ${epsilon2}
+variable	epsilon_8081 equal ${epsilon2}
+variable	epsilon_8283 equal ${epsilon2}
+variable	epsilon_8485 equal ${epsilon2}
+variable	epsilon_8687 equal ${epsilon2}
+variable	epsilon_8889 equal ${epsilon2}
+variable	epsilon_9091 equal ${epsilon2}
+variable	epsilon_9293 equal ${epsilon2}
+variable	epsilon_9495 equal ${epsilon2}
+variable	epsilon_9697 equal ${epsilon2}
+variable	epsilon_9899 equal ${epsilon2}
+variable	epsilon_100101 equal ${epsilon2}
+variable	epsilon_102103 equal ${epsilon2}
+variable	epsilon_104105 equal ${epsilon2}
+variable	epsilon_106107 equal ${epsilon2}
+variable	epsilon_108109 equal ${epsilon2}
+variable	epsilon_110111 equal ${epsilon2}
+variable	epsilon_112113 equal ${epsilon2}
+variable	epsilon_114115 equal ${epsilon2}
+variable	epsilon_116117 equal ${epsilon2}
+variable	epsilon_118119 equal ${epsilon2}
+variable	epsilon_120121 equal ${epsilon2}
+variable	epsilon_122123 equal ${epsilon2}
+variable	epsilon_124125 equal ${epsilon2}
+variable	epsilon_126127 equal ${epsilon2}
+variable	epsilon_128129 equal ${epsilon2}
+variable	epsilon_130131 equal ${epsilon2}
+variable	epsilon_132133 equal ${epsilon2}
+variable	epsilon_134135 equal ${epsilon2}
+variable	epsilon_136137 equal ${epsilon2}
+variable	epsilon_138139 equal ${epsilon2}
+variable	epsilon_140141 equal ${epsilon2}
+variable	epsilon_142143 equal ${epsilon2}
+variable	epsilon_144145 equal ${epsilon2}
+variable	epsilon_146147 equal ${epsilon2}
+variable	epsilon_148149 equal ${epsilon2}
+variable	epsilon_150151 equal ${epsilon2}
+variable	epsilon_152153 equal ${epsilon2}
+variable	epsilon_154155 equal ${epsilon2}
+variable	epsilon_156157 equal ${epsilon2}
+variable	epsilon_158159 equal ${epsilon2}
+variable	epsilon_160161 equal ${epsilon2}
+variable	epsilon_162163 equal ${epsilon2}
+variable	epsilon_164165 equal ${epsilon2}
+variable	epsilon_166167 equal ${epsilon2}
+variable	epsilon_168169 equal ${epsilon2}
+variable	epsilon_170171 equal ${epsilon2}
+variable	epsilon_172173 equal ${epsilon2}
+variable	epsilon_174175 equal ${epsilon2}
+variable	epsilon_176177 equal ${epsilon2}
+variable	epsilon_178179 equal ${epsilon2}
+variable	epsilon_180181 equal ${epsilon2}
+variable	epsilon_182183 equal ${epsilon2}
+variable	epsilon_184185 equal ${epsilon2}
+variable	epsilon_186187 equal ${epsilon2}
+variable	epsilon_188189 equal ${epsilon2}
+variable	epsilon_190191 equal ${epsilon2}
+variable	epsilon_192193 equal ${epsilon2}
+variable	epsilon_194195 equal ${epsilon2}
+variable	epsilon_196197 equal ${epsilon2}
+variable	epsilon_198199 equal ${epsilon2}
+variable	epsilon_200201 equal ${epsilon2}
+variable	epsilon_202203 equal ${epsilon2}
+variable	epsilon_204205 equal ${epsilon2}
+variable	epsilon_206207 equal ${epsilon2}
+variable	epsilon_208209 equal ${epsilon2}
+variable	epsilon_210211 equal ${epsilon2}
+variable	epsilon_212213 equal ${epsilon2}
+variable	epsilon_214215 equal ${epsilon2}
+variable	epsilon_216217 equal ${epsilon2}
+variable	epsilon_218219 equal ${epsilon2}
+variable	epsilon_220221 equal ${epsilon2}
+variable	epsilon_222223 equal ${epsilon2}
+variable	epsilon_224225 equal ${epsilon2}
+variable	epsilon_226227 equal ${epsilon2}
+variable	epsilon_228229 equal ${epsilon2}
+variable	epsilon_230231 equal ${epsilon2}
+variable	epsilon_232233 equal ${epsilon2}
+variable	epsilon_234235 equal ${epsilon2}
+variable	epsilon_236237 equal ${epsilon2}
+variable	epsilon_238239 equal ${epsilon2}
+variable	epsilon_240241 equal ${epsilon2}
+
+
+
+
+
+
+
+fix		1 all langevin 1. 1.0 1 ${RandGen}
+fix		2 all nve
+
+######################### Start of Loop #####################################
+
+bond_style      fene
+bond_coeff      1       30.0    1.5     1.0     1.0
+
+pair_style lj/smooth/linear 2.5
+pair_coeff	* * ${epsilon_11} 1
+pair_coeff	2 3 ${epsilon_23} 1
+pair_coeff	4 5 ${epsilon_45} 1
+pair_coeff	6 7 ${epsilon_67} 1
+pair_coeff	8 9 ${epsilon_89} 1
+pair_coeff	10 11 ${epsilon_1011} 1
+pair_coeff	12 13 ${epsilon_1213} 1
+pair_coeff	14 15 ${epsilon_1415} 1
+pair_coeff	16 17 ${epsilon_1617} 1
+pair_coeff	18 19 ${epsilon_1819} 1
+pair_coeff	20 21 ${epsilon_2021} 1
+pair_coeff	22 23 ${epsilon_2223} 1
+pair_coeff	24 25 ${epsilon_2425} 1
+pair_coeff	26 27 ${epsilon_2627} 1
+pair_coeff	28 29 ${epsilon_2829} 1
+pair_coeff	30 31 ${epsilon_3031} 1
+pair_coeff	32 33 ${epsilon_3233} 1
+pair_coeff	34 35 ${epsilon_3435} 1
+pair_coeff	36 37 ${epsilon_3637} 1
+pair_coeff	38 39 ${epsilon_3839} 1
+pair_coeff	40 41 ${epsilon_4041} 1
+pair_coeff	42 43 ${epsilon_4243} 1
+pair_coeff	44 45 ${epsilon_4445} 1
+pair_coeff	46 47 ${epsilon_4647} 1
+pair_coeff	48 49 ${epsilon_4849} 1
+pair_coeff	50 51 ${epsilon_5051} 1
+pair_coeff	52 53 ${epsilon_5253} 1
+pair_coeff	54 55 ${epsilon_5455} 1
+pair_coeff	56 57 ${epsilon_5657} 1
+pair_coeff	58 59 ${epsilon_5859} 1
+pair_coeff	60 61 ${epsilon_6061} 1
+pair_coeff	62 63 ${epsilon_6263} 1
+pair_coeff	64 65 ${epsilon_6465} 1
+pair_coeff	66 67 ${epsilon_6667} 1
+pair_coeff	68 69 ${epsilon_6869} 1
+pair_coeff	70 71 ${epsilon_7071} 1
+pair_coeff	72 73 ${epsilon_7273} 1
+pair_coeff	74 75 ${epsilon_7475} 1
+pair_coeff	76 77 ${epsilon_7677} 1
+pair_coeff	78 79 ${epsilon_7879} 1
+pair_coeff	80 81 ${epsilon_8081} 1
+pair_coeff	82 83 ${epsilon_8283} 1
+pair_coeff	84 85 ${epsilon_8485} 1
+pair_coeff	86 87 ${epsilon_8687} 1
+pair_coeff	88 89 ${epsilon_8889} 1
+pair_coeff	90 91 ${epsilon_9091} 1
+pair_coeff	92 93 ${epsilon_9293} 1
+pair_coeff	94 95 ${epsilon_9495} 1
+pair_coeff	96 97 ${epsilon_9697} 1
+pair_coeff	98 99 ${epsilon_9899} 1
+pair_coeff	100 101 ${epsilon_100101} 1
+pair_coeff	102 103 ${epsilon_102103} 1
+pair_coeff	104 105 ${epsilon_104105} 1
+pair_coeff	106 107 ${epsilon_106107} 1
+pair_coeff	108 109 ${epsilon_108109} 1
+pair_coeff	110 111 ${epsilon_110111} 1
+pair_coeff	112 113 ${epsilon_112113} 1
+pair_coeff	114 115 ${epsilon_114115} 1
+pair_coeff	116 117 ${epsilon_116117} 1
+pair_coeff	118 119 ${epsilon_118119} 1
+pair_coeff	120 121 ${epsilon_120121} 1
+pair_coeff	122 123 ${epsilon_122123} 1
+pair_coeff	124 125 ${epsilon_124125} 1
+pair_coeff	126 127 ${epsilon_126127} 1
+pair_coeff	128 129 ${epsilon_128129} 1
+pair_coeff	130 131 ${epsilon_130131} 1
+pair_coeff	132 133 ${epsilon_132133} 1
+pair_coeff	134 135 ${epsilon_134135} 1
+pair_coeff	136 137 ${epsilon_136137} 1
+pair_coeff	138 139 ${epsilon_138139} 1
+pair_coeff	140 141 ${epsilon_140141} 1
+pair_coeff	142 143 ${epsilon_142143} 1
+pair_coeff	144 145 ${epsilon_144145} 1
+pair_coeff	146 147 ${epsilon_146147} 1
+pair_coeff	148 149 ${epsilon_148149} 1
+pair_coeff	150 151 ${epsilon_150151} 1
+pair_coeff	152 153 ${epsilon_152153} 1
+pair_coeff	154 155 ${epsilon_154155} 1
+pair_coeff	156 157 ${epsilon_156157} 1
+pair_coeff	158 159 ${epsilon_158159} 1
+pair_coeff	160 161 ${epsilon_160161} 1
+pair_coeff	162 163 ${epsilon_162163} 1
+pair_coeff	164 165 ${epsilon_164165} 1
+pair_coeff	166 167 ${epsilon_166167} 1
+pair_coeff	168 169 ${epsilon_168169} 1
+pair_coeff	170 171 ${epsilon_170171} 1
+pair_coeff	172 173 ${epsilon_172173} 1
+pair_coeff	174 175 ${epsilon_174175} 1
+pair_coeff	176 177 ${epsilon_176177} 1
+pair_coeff	178 179 ${epsilon_178179} 1
+pair_coeff	180 181 ${epsilon_180181} 1
+pair_coeff	182 183 ${epsilon_182183} 1
+pair_coeff	184 185 ${epsilon_184185} 1
+pair_coeff	186 187 ${epsilon_186187} 1
+pair_coeff	188 189 ${epsilon_188189} 1
+pair_coeff	190 191 ${epsilon_190191} 1
+pair_coeff	192 193 ${epsilon_192193} 1
+pair_coeff	194 195 ${epsilon_194195} 1
+pair_coeff	196 197 ${epsilon_196197} 1
+pair_coeff	198 199 ${epsilon_198199} 1
+pair_coeff	200 201 ${epsilon_200201} 1
+pair_coeff	202 203 ${epsilon_202203} 1
+pair_coeff	204 205 ${epsilon_204205} 1
+pair_coeff	206 207 ${epsilon_206207} 1
+pair_coeff	208 209 ${epsilon_208209} 1
+pair_coeff	210 211 ${epsilon_210211} 1
+pair_coeff	212 213 ${epsilon_212213} 1
+pair_coeff	214 215 ${epsilon_214215} 1
+pair_coeff	216 217 ${epsilon_216217} 1
+pair_coeff	218 219 ${epsilon_218219} 1
+pair_coeff	220 221 ${epsilon_220221} 1
+pair_coeff	222 223 ${epsilon_222223} 1
+pair_coeff	224 225 ${epsilon_224225} 1
+pair_coeff	226 227 ${epsilon_226227} 1
+pair_coeff	228 229 ${epsilon_228229} 1
+pair_coeff	230 231 ${epsilon_230231} 1
+pair_coeff	232 233 ${epsilon_232233} 1
+pair_coeff	234 235 ${epsilon_234235} 1
+pair_coeff	236 237 ${epsilon_236237} 1
+pair_coeff	238 239 ${epsilon_238239} 1
+pair_coeff	240 241 ${epsilon_240241} 1
+
+
+#special_bonds	lj 0.0 0.0 0.0
+special_bonds   fene
+
+neighbor	2.0 bin
+neigh_modify    every 1 delay 10 check yes
+
+restart         ${Nrestart} restart.${root}
+
+thermo_style	custom step temp pe ke etotal v_epsilon
+thermo		${Nf}
+
+
+fix    extra1 all print 100 "${x1_1} ${y1_1} ${z1_1} ${x1_2} ${y1_2} ${z1_2} ${x1_3} ${y1_3} ${z1_3} ${x1_4} ${y1_4} ${z1_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_1.txt
+fix    extra2 all print 100 "${x2_1} ${y2_1} ${z2_1} ${x2_2} ${y2_2} ${z2_2} ${x2_3} ${y2_3} ${z2_3} ${x2_4} ${y2_4} ${z2_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_2.txt
+fix    extra3 all print 100 "${x3_1} ${y3_1} ${z3_1} ${x3_2} ${y3_2} ${z3_2} ${x3_3} ${y3_3} ${z3_3} ${x3_4} ${y3_4} ${z3_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_3.txt
+fix    extra4 all print 100 "${x4_1} ${y4_1} ${z4_1} ${x4_2} ${y4_2} ${z4_2} ${x4_3} ${y4_3} ${z4_3} ${x4_4} ${y4_4} ${z4_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_4.txt
+fix    extra5 all print 100 "${x5_1} ${y5_1} ${z5_1} ${x5_2} ${y5_2} ${z5_2} ${x5_3} ${y5_3} ${z5_3} ${x5_4} ${y5_4} ${z5_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_5.txt
+fix    extra6 all print 100 "${x6_1} ${y6_1} ${z6_1} ${x6_2} ${y6_2} ${z6_2} ${x6_3} ${y6_3} ${z6_3} ${x6_4} ${y6_4} ${z6_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_6.txt
+fix    extra7 all print 100 "${x7_1} ${y7_1} ${z7_1} ${x7_2} ${y7_2} ${z7_2} ${x7_3} ${y7_3} ${z7_3} ${x7_4} ${y7_4} ${z7_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_7.txt
+fix    extra8 all print 100 "${x8_1} ${y8_1} ${z8_1} ${x8_2} ${y8_2} ${z8_2} ${x8_3} ${y8_3} ${z8_3} ${x8_4} ${y8_4} ${z8_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_8.txt
+fix    extra9 all print 100 "${x9_1} ${y9_1} ${z9_1} ${x9_2} ${y9_2} ${z9_2} ${x9_3} ${y9_3} ${z9_3} ${x9_4} ${y9_4} ${z9_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_9.txt
+fix    extra10 all print 100 "${x10_1} ${y10_1} ${z10_1} ${x10_2} ${y10_2} ${z10_2} ${x10_3} ${y10_3} ${z10_3} ${x10_4} ${y10_4} ${z10_4}  " screen no title "" file N90_epsilon_11_zeta_1_M_60_Series_chain_10.txt
+
+
+timestep	0.01
+
+run		${Nrun}
